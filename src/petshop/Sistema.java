@@ -162,6 +162,32 @@ public class Sistema {
 
     }
 
+//Método para calcular valor do serviço.
+
+    public double calcularValorServico(int servico, int porte) {
+        switch (servico) {
+            case 1:
+                if (porte == 1) {
+                    return 30;
+                } else if (porte == 2) {
+                    return 40;
+                } else {
+                    return 50;
+                }
+            case 2:
+                if (porte == 1) {
+                    return 40;
+                } else if (porte == 2) {
+                    return 50;
+                } else {
+                    return 60;
+                }
+            case 3:
+                return 80;
+            default:
+                return 0;
+        }
+    }
 // Método para criar agendamento.
 
     public void criarAgendamento() {
@@ -223,6 +249,9 @@ public class Sistema {
         } while (nagend < 1 || nagend > 3);
 
         agendamento.servico = nagend;
+
+        agendamento.valor = calcularValorServico(nagend, petEncontrado.porte);
+        System.out.println("Valor do serviço R$:" + agendamento.valor);
 
         agendamentos.add(agendamento);
 
