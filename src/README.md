@@ -1,0 +1,5 @@
+No desenvolvimento da V1 do projeto PetShop em Java, a IA foi utilizada como ferramenta de apoio em três conversas principais: “Aula POO em Java”, “Aula prática de Java” e “Evolução do Sistema PetShop”. Nesse processo, houve uso da IA para explicar conceitos de programação orientada a objetos, sugerir estruturas de código, responder dúvidas sobre organização do sistema e apoiar a divisão do projeto em etapas menores.
+
+Pelas interações, a IA participou oferecendo explicações sobre classes, atributos, construtores, getters, setters, relacionamento entre entidades, organização em arquivos e possíveis evoluções do sistema. Também ajudou com sugestões de modelagem e ajustes de fluxo do menu. Ao mesmo tempo, o direcionamento do projeto foi sendo definido pelo aluno, que escolheu simplificações, pediu mudanças na estrutura, controlou o ritmo das explicações e conduziu a implementação por etapas.
+
+Assim, o uso da IA ocorreu como suporte no processo de construção e entendimento do projeto, sem que todo o desenvolvimento tenha acontecido de forma automática ou independente da atuação do aluno.
