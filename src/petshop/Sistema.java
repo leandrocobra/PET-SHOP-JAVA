@@ -14,14 +14,15 @@ public class Sistema {
 
     public void iniciar() {
         int opcao = 0;
-        while (opcao != 5) {
+        while (opcao != 6) {
             System.out.println("\n=====PETSHOP=====");
             System.out.println("Escolha uma opção");
             System.out.println("1 - Cadastrar pets");
             System.out.println("2 - Listar Pets");
             System.out.println("3 - Criar agendamento");
             System.out.println("4 - Listar agendamento");
-            System.out.println("5 - Sair");
+            System.out.println("5 - Entrar no menu de ADM");
+            System.out.println("6 - Sair");
 
             opcao = scanner.nextInt();
 
@@ -42,8 +43,10 @@ public class Sistema {
                 case 4:
                     listarAgendamentos();
                     break;
-
-                case 5:
+                case 5
+                    menuAdm();
+                    break;
+                case 6:
                     System.out.println("Encerrando sistema...");
                     break;
 
@@ -289,6 +292,36 @@ public class Sistema {
             System.out.println(agendamento.id + " - " + pet.nome + " - " + nomeServico + " R$: " + agendamento.valor);
         }
     }
+
+    public class menuAdm(){
+
+        int opcao = 0;
+
+        while (opcao !=3){
+
+            System.out.println("\n=== MÓDULO DE ADM ===");
+            System.out.println("1 - Listar Agendamentos");
+            System.out.println("2 - Alterar status dos agendamentos");
+            System.out.println("3 - Voltar");
+
+            opcao = scanner.nextInt();
+
+            switch (opcao){
+                case 1:
+                    listarAgendamentos();
+                    break;
+                case 2:
+                    System.out.println("módulo para alt status (criando...)");
+                    break;
+                case 3:
+                    System.out.println("Voltando ao menu principal...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
+    }
+
 
 }
 
