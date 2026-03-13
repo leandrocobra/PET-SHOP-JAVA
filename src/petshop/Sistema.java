@@ -364,7 +364,10 @@ public class Sistema {
             case 2:
                 agendamentoEncontrado.status = "EM ANDAMENTO";
                 break;
-            case 2:
+            case 3:
+                agendamentoEncontrado.status = "FINALIZADO";
+                break;
+            case 4:
                 agendamentoEncontrado.status = "CANCELADO";
                 break;
             default:
