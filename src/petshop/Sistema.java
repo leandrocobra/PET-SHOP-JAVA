@@ -91,10 +91,10 @@ public class Sistema {
             pet.especie = "Gato";
         }
 
+        scanner.nextLine();
+
         System.out.println("Escolha a raça do PET:");
         pet.raca = scanner.nextLine();
-
-        scanner.nextLine();
 
         System.out.println("Escolha a idade do PET:");
         pet.idade = scanner.nextInt();
@@ -131,6 +131,18 @@ public class Sistema {
             return "Grande";
         }
     }
+//Método para buscar pet por ID
+
+    public Pet buscarPetPorId(int id){
+        for (Pet pet : pets){
+            if (pet.id == id){
+                return pet;
+            }
+        }
+        return null;
+    }
+
+
 
 // Método para listar pets.
 
