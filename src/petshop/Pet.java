@@ -5,7 +5,9 @@ public class Pet {
     String nome;
     String especie;
 
-
+    String raca;
+    int idade;
+    int porte;
 
 
 }

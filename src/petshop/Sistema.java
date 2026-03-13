@@ -56,7 +56,7 @@ public class Sistema {
 
 // Método para cadastrar pet.
 
-    public void cadastrarPet(){
+    public void cadastrarPet() {
         Pet pet = new Pet();
 
         System.out.println("== CADASTRO DE PET ==");
@@ -77,13 +77,13 @@ public class Sistema {
 
             opcaoEspecie = scanner.nextInt();
 
-            if (opcaoEspecie == 3){
+            if (opcaoEspecie == 3) {
                 System.out.println("Aqui não é um zoológico");
             } else if (opcaoEspecie != 1 && opcaoEspecie != 2) {
                 System.out.println("Opção inválida!");
             }
 
-        }while (opcaoEspecie !=1 && opcaoEspecie !=2);
+        } while (opcaoEspecie != 1 && opcaoEspecie != 2);
 
         if (opcaoEspecie == 1) {
             pet.especie = "Cachorro";
@@ -91,24 +91,61 @@ public class Sistema {
             pet.especie = "Gato";
         }
 
+        System.out.println("Escolha a raça do PET:");
+        pet.raca = scanner.nextLine();
+
+        scanner.nextLine();
+
+        System.out.println("Escolha a idade do PET:");
+        pet.idade = scanner.nextInt();
+
+        do {
+            System.out.println("\nEscolha o porte do animal:");
+            System.out.println("1 - Pequeno (até 10kg)");
+            System.out.println("2 - Médio (10kg a 25kg)");
+            System.out.println("3 - Grande (acima de 25kg)");
+            System.out.print("Opção: ");
+            pet.porte = scanner.nextInt();
+            scanner.nextLine();
+
+            if (pet.porte < 1 || pet.porte > 3) {
+                System.out.println("Opção de porte inválida!");
+            }
+
+        } while (pet.porte < 1 || pet.porte > 3);
+
+
         pets.add(pet);
 
         System.out.println("Pet cadastrado com sucesso!");
     }
 
+// Método conversão de porte de inteiro para string.
+
+    public String textoPorte(int porte){
+        if (porte == 1){
+            return "Pequeno";
+        } else if (porte == 2) {
+            return "Médio";
+        }else{
+            return "Grande";
+        }
+    }
+
 // Método para listar pets.
 
-    public void listarPets(){
+    public void listarPets() {
 
-        System.out.println("\n== LISTA DE PETS ===");
+        System.out.println("\n==== LISTA DE PETS =====");
+        System.out.println("ID -- NOME -- ESPÉCIE -- RAÇA -- IDADE -- PORTE");
 
-        if (pets.size() == 0){
+        if (pets.size() == 0) {
             System.out.println("Nenhum pet cadastrado");
             return;
         }
 
         for (Pet pet : pets) {
-            System.out.println(pet.id + " - " + pet.nome + " - " + pet.especie);
+            System.out.println(pet.id + " - " + pet.nome + " - " + pet.especie + " - " + pet.raca + " - " + pet.idade + " anos - " + " Porte: " + textoPorte(pet.porte));
         }
 
     }
@@ -139,19 +176,19 @@ public class Sistema {
 
             petEncontrado = false;
 
-            for (Pet pet : pets){
-                if (pet.id == agendamento.idPet){
+            for (Pet pet : pets) {
+                if (pet.id == agendamento.idPet) {
                     petEncontrado = true;
                 }
             }
 
-            if (!petEncontrado){
+            if (!petEncontrado) {
                 System.out.println("ID de pet não encontrado! Digite novamente.");
             }
 
-        }while(!petEncontrado);
+        } while (!petEncontrado);
 
-            int nagend = 0;
+        int nagend = 0;
 
         do {
 
@@ -176,7 +213,7 @@ public class Sistema {
                     System.out.println("NÚMERO DE SERVIÇO INCORRETO!!!");
             }
 
-        }while (nagend < 1 || nagend > 3);
+        } while (nagend < 1 || nagend > 3);
 
         agendamento.servico = nagend;
 
@@ -186,21 +223,21 @@ public class Sistema {
 
 // Método para listar os agendamentos.
 
-    public void listarAgendamentos(){
+    public void listarAgendamentos() {
 
         System.out.println("\n=== LISTA DE AGENDAMENTOS ===");
 
-        if (agendamentos.size() == 0){
+        if (agendamentos.size() == 0) {
             System.out.println("Nenhum agendamento cadastrado");
             return;
         }
 
-        for (Agendamento agendamento : agendamentos){
+        for (Agendamento agendamento : agendamentos) {
 
             String nomePet = "";
 
-            for (Pet pet : pets){
-                if (pet.id == agendamento.idPet){
+            for (Pet pet : pets) {
+                if (pet.id == agendamento.idPet) {
                     nomePet = pet.nome;
                     break;
                 }
@@ -208,7 +245,7 @@ public class Sistema {
 
             String nomeServico = "";
 
-            switch (agendamento.servico){
+            switch (agendamento.servico) {
                 case 1:
                     nomeServico = "BANHO";
                     break;
@@ -225,9 +262,6 @@ public class Sistema {
             System.out.println(agendamento.id + " - " + nomePet + " - " + nomeServico);
         }
     }
-
-
-
 
 
 }

@@ -4,4 +4,6 @@ public class Agendamento {
     int id;
     int idPet;
     int servico;
+    double valor;
+
 }
