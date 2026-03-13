@@ -43,7 +43,7 @@ public class Sistema {
                 case 4:
                     listarAgendamentos();
                     break;
-                case 5
+                case 5:
                     menuAdm();
                     break;
                 case 6:
@@ -256,6 +256,8 @@ public class Sistema {
         agendamento.valor = calcularValorServico(nagend, petEncontrado.porte);
         System.out.println("Valor do serviço R$:" + agendamento.valor);
 
+        agendamento.status = "AGENDADO";
+
         agendamentos.add(agendamento);
 
     }
@@ -289,11 +291,11 @@ public class Sistema {
                     break;
             }
 
-            System.out.println(agendamento.id + " - " + pet.nome + " - " + nomeServico + " R$: " + agendamento.valor);
+            System.out.println(agendamento.id + " - " + pet.nome + " - " + nomeServico + " R$: " + agendamento.valor + " Status: " + agendamento.status);
         }
     }
 
-    public class menuAdm(){
+    public void menuAdm(){
 
         int opcao = 0;
 
@@ -311,7 +313,7 @@ public class Sistema {
                     listarAgendamentos();
                     break;
                 case 2:
-                    System.out.println("módulo para alt status (criando...)");
+                    alterarStatusAgendamento();
                     break;
                 case 3:
                     System.out.println("Voltando ao menu principal...");
@@ -322,7 +324,57 @@ public class Sistema {
         }
     }
 
+    public void alterarStatusAgendamento() {
 
+        if (agendamentos.size() == 0) {
+            System.out.println("Nenhum agendamento cadastrado");
+            return;
+        }
+
+        listarAgendamentos();
+
+        System.out.println("Digite o ID do agendamento que deseja alterar Status");
+        int idAgendamento = scanner.nextInt();
+
+        Agendamento agendamentoEncontrado = null;
+
+        for (Agendamento agendamento : agendamentos) {
+            if (agendamento.id == idAgendamento) {
+                agendamentoEncontrado = agendamento;
+            }
+        }
+
+        if (agendamentoEncontrado == null) {
+            System.out.println("Agendamento não encontrado.");
+            return;
+        }
+
+        System.out.println("Escolha o novo status:");
+        System.out.println("1 - AGENDADO");
+        System.out.println("2 - EM ANDAMENTO");
+        System.out.println("3 - FINALIZADO");
+        System.out.println("4 - CANCELADO");
+
+        int opcaoStatus = scanner.nextInt();
+
+        switch (opcaoStatus){
+            case 1:
+                agendamentoEncontrado.status = "AGENDADO";
+                break;
+            case 2:
+                agendamentoEncontrado.status = "EM ANDAMENTO";
+                break;
+            case 2:
+                agendamentoEncontrado.status = "CANCELADO";
+                break;
+            default:
+                System.out.println("Opção inválida.");
+                return;
+        }
+
+        System.out.println("Status atualizado com sucesso!");
+
+    }
 }
 
 

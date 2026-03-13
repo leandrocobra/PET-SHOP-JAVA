@@ -5,5 +5,6 @@ public class Agendamento {
     int idPet;
     int servico;
     double valor;
+    String status;
 
 }
