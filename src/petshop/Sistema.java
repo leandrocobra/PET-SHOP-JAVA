@@ -68,13 +68,32 @@ public class Sistema {
         System.out.print("Nome do pet: ");
         pet.nome = scanner.nextLine();
 
-        System.out.print("Espécie do pet: ");
-        pet.especie = scanner.nextLine();
+        int opcaoEspecie;
+        do {
+            System.out.println("Escolha a espécie do pet: ");
+            System.out.println("Digite 1 para Cachorro");
+            System.out.println("Digite 2 para Gato");
+            System.out.println("Digite 3 para outra espécie");
+
+            opcaoEspecie = scanner.nextInt();
+
+            if (opcaoEspecie == 3){
+                System.out.println("Aqui não é um zoológico");
+            } else if (opcaoEspecie != 1 && opcaoEspecie != 2) {
+                System.out.println("Opção inválida!");
+            }
+
+        }while (opcaoEspecie !=1 && opcaoEspecie !=2);
+
+        if (opcaoEspecie == 1) {
+            pet.especie = "Cachorro";
+        } else {
+            pet.especie = "Gato";
+        }
 
         pets.add(pet);
 
         System.out.println("Pet cadastrado com sucesso!");
-
     }
 
 // Método para listar pets.
