@@ -270,14 +270,7 @@ public class Sistema {
 
         for (Agendamento agendamento : agendamentos) {
 
-            String nomePet = "";
-
-            for (Pet pet : pets) {
-                if (pet.id == agendamento.idPet) {
-                    nomePet = pet.nome;
-                    break;
-                }
-            }
+            Pet pet = buscarPetPorId(agendamento.idPet);
 
             String nomeServico = "";
 
@@ -285,20 +278,17 @@ public class Sistema {
                 case 1:
                     nomeServico = "BANHO";
                     break;
-
                 case 2:
                     nomeServico = "TOSA";
                     break;
-
                 case 3:
                     nomeServico = "VACINA";
                     break;
             }
 
-            System.out.println(agendamento.id + " - " + nomePet + " - " + nomeServico);
+            System.out.println(agendamento.id + " - " + pet.nome + " - " + nomeServico + " R$: " + agendamento.valor);
         }
     }
-
 
 }
 
