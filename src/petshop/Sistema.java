@@ -115,11 +115,11 @@ public class Sistema {
 
 // Método para criar agendamento.
 
-    public void criarAgendamento(){
+    public void criarAgendamento() {
 
         System.out.println("\n=== CRIAR AGENDAMENTO ===");
 
-        if (pets.size() == 0){
+        if (pets.size() == 0) {
             System.out.println("Nenhum pet cadastrado, cadastre um pet primeiro.");
             return;
         }
@@ -131,10 +131,25 @@ public class Sistema {
 
         agendamento.id = agendamentos.size() + 1;
 
-        System.out.println("Digite o ID do pet:");
-        agendamento.idPet = scanner.nextInt();
+        boolean petEncontrado;
 
-        scanner.nextLine();
+        do {
+            System.out.println("Digite o ID do pet:");
+            agendamento.idPet = scanner.nextInt();
+
+            petEncontrado = false;
+
+            for (Pet pet : pets){
+                if (pet.id == agendamento.idPet){
+                    petEncontrado = true;
+                }
+            }
+
+            if (!petEncontrado){
+                System.out.println("ID de pet não encontrado! Digite novamente.");
+            }
+
+        }while(!petEncontrado);
 
             int nagend = 0;
 
