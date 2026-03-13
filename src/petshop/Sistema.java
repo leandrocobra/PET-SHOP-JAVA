@@ -180,25 +180,20 @@ public class Sistema {
 
         agendamento.id = agendamentos.size() + 1;
 
-        boolean petEncontrado;
+        Pet petEncontrado;
 
         do {
             System.out.println("Digite o ID do pet:");
-            agendamento.idPet = scanner.nextInt();
+            int idInformado = scanner.nextInt();
 
-            petEncontrado = false;
+            petEncontrado = buscarPetPorId(idInformado);
 
-            for (Pet pet : pets) {
-                if (pet.id == agendamento.idPet) {
-                    petEncontrado = true;
-                }
-            }
-
-            if (!petEncontrado) {
+            if (petEncontrado == null) {
                 System.out.println("ID de pet não encontrado! Digite novamente.");
+                }else {
+                    agendamento.idPet = idInformado;
             }
-
-        } while (!petEncontrado);
+        } while (petEncontrado == null);
 
         int nagend = 0;
 
